@@ -1,0 +1,13 @@
+• The reason for specializing the sum() member function.
+You specialize the sum() member function so that if it takes in two strings then it adds a space between them. This is for formatting, because the original sum function does not add a space.
+
+
+
+• The reason for specializing the initial value for a summation.
+
+They are initialized in a different way so that when the function is called with a string, size_t or int, it can make the variable the proper format. 
+
+
+• The reason for defining the class variable outside the class definition.
+
+I defined the l and v class variables in a public space so that they are accessible by every function.

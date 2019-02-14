@@ -1,0 +1,111 @@
+• The difference between the implementations of a composition and an aggregation.
+
+MessagePack is a composition of Message
+
+class MessagePack {
+        Message* message;
+        size_t no_msg;
+    public:
+        MessagePack();
+        MessagePack(Message*[], int);
+        void display(std::ostream&) const;
+        size_t size() const;
+        ~MessagePack();
+        
+        MessagePack(const MessagePack&);            //copy constructor
+        MessagePack& operator=(const MessagePack&); //copy assignment operator
+        MessagePack(MessagePack&&);                 //move constructor
+        MessagePack& operator=(MessagePack&&);      //move assignment operator
+    };
+    std::ostream& operator<<(std::ostream&, const MessagePack&);
+
+Notifications is an aggregation of Message
+
+class Notifications {
+        const Message** message;
+        int max_msgs;
+        int no_msgs;
+    public:
+        Notifications();
+        Notifications(int);
+        Notifications& operator+=(const Message& msg);
+        Notifications& operator-=(const Message& msg);
+        void display(std::ostream&) const;
+        size_t size() const;
+        ~Notifications();
+        
+        Notifications(const Notifications&);            
+        Notifications& operator=(const Notifications&); 
+        Notifications(Notifications&&);                 
+        Notifications& operator=(Notifications&&);
+    };
+
+MessagePack has a 'has-a' relationship with Message. It is responsible for destroying its own components before its own destruction. MessagePack is also incomplete without Message.
+
+Notifications is complete whether or not Message exists because it is an aggregation. It does not manage the construction or destruction of the object that it uses.
+
+• The difference between the implementations of move and copy functions in a
+composition and an aggregation.
+
+Notification copy and move functions
+
+Notifications& Notifications::operator=(const Notifications& n) {
+        if (&n != this) {
+            no_msgs = n.no_msgs;
+            max_msgs = n.max_msgs;
+            delete[] message;
+            message = *new const Message**[max_msgs];
+            
+            for (size_t i = 0; i < max_msgs; i++) {
+                message[i] = n.message[i];
+            }
+        }
+        return *this;
+    }
+
+Notifications& Notifications::operator=(Notifications&& n) {
+        if (&n != this) {
+            delete[] message;
+            no_msgs = n.no_msgs;
+            max_msgs = n.max_msgs;
+            message = n.message;
+            
+            n.no_msgs = 0;
+            n.max_msgs = 0;
+            n.message = nullptr;
+        }
+        return *this;
+    }
+
+MessagePack copy and move functions
+
+MessagePack& MessagePack::operator=(const MessagePack& msgp) {
+        if (&msgp != this) {
+            no_msg = msgp.no_msg;
+            delete[] message;
+            
+            message = new Message[no_msg];
+            for (size_t i = 0; i < no_msg; i++) {
+                message[i] = msgp.message[i];
+            }
+        }
+        return *this;
+    }
+
+MessagePack& MessagePack::operator=(MessagePack&& msgp) {
+        if (&msgp != this) {
+            
+            delete[] message;
+            no_msg = msgp.no_msg;
+            message = msgp.message;
+            
+            msgp.no_msg = 0;
+            msgp.message = nullptr;
+        }
+        return *this;
+    }
+
+No difference really.
+
+
+QUIZ REFLECT - I got 100%.
