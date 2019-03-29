@@ -1,0 +1,11 @@
+• The reason for using the vector container rather than any other available in the STL.
+
+Vectors are used in this assignment because they operate like arrays. Data can be pushed, read and accessed easily.
+
+• Why there is no need to deallocate the dynamically allocated memory in your own code.
+
+Because we are creating what we need as we need it. We are creating new objects that need to be accessed within the program.
+
+• How the range-based for simplifies coding in this case.
+
+Range-based for makes the code cleaner and easier to read. It is used so that it cannot go out of scope also.

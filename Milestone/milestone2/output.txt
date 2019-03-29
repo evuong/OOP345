@@ -1,0 +1,81 @@
+Command Line : /Users/edwardvuong/Library/Developer/Xcode/DerivedData/milestone2-flgrfctvngvfjggylfcenvxshvxz/Build/Products/Debug/milestone2 Inventory.txt CustomerOrders.txt 
+
+Customer Order Assembly
+=======================
+
+Items in Stock
+--------------
+CPU          [123456] Quantity 5  Description: Central Processing Unit
+Memory       [654321] Quantity 10 Description: Basic Flash Memory
+GPU          [456789] Quantity 2  Description: General Processing Unit
+SSD          [987654] Quantity 5  Description: Solid State Drive
+Power Supply [147852] Quantity 20 Description: Basic AC Power Supply
+
+For Manual Validation: Item 1
+ getName(): CPU
+ getSerialNumber(): 123456
+ getQuantity(): 5
+ getSerialNumber(): 123457
+ getQuantity(): 4
+
+Customer Orders
+---------------
+Elliott C.   [Gaming PC]
+             CPU
+             Memory
+             GPU
+             GPU
+             GPU
+             SSD
+             Power Supply
+Chris S.     [Laptop]
+             CPU
+             Memory
+             SSD
+             Power Supply
+Mary-Lynn M. [Desktop PC]
+             CPU
+             Memory
+             Power Supply
+Chris T.     [Micro Controller]
+             GPU
+             GPU
+             Power Supply
+             SSD
+
+For Manual Validation
+Chris T.     [Micro Controller]
+             GPU
+             GPU
+             Power Supply
+             SSD
+Chris T.     [Micro Controller]
+             GPU
+             GPU
+             Power Supply
+             SSD
+
+Chloe        [Flight PC]
+             CPU
+             GPU
+             Power Supply
+Mary-Lynn M. [Desktop PC]
+             CPU
+             Memory
+             Power Supply
+
+For Manual Validation Filling
+Mary-Lynn M. [Desktop PC]
+             CPU
+             Memory
+             Power Supply
+ isFilled(): false
+Filled Mary-Lynn M.[Desktop PC][CPU][123457]
+ isFilled(): false
+Unable to fill Mary-Lynn M.[Desktop PC][CPU][123457] already filled
+Filled Mary-Lynn M.[Desktop PC][Memory][654321]
+Filled Mary-Lynn M.[Desktop PC][Power Supply][147852]
+ isFilled(): true
+
+Customer Order Assembly Complete
+Program ended with exit code: 0

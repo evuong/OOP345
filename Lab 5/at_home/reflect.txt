@@ -1,0 +1,30 @@
+• The difference between the implementations of a functor and a lambda expression.
+
+The implementation of a functor is written in a different file while it is being called in the main. The lambda expression is written on the spot, within the main.
+
+studentList.display(std::cout, [](float grade) -> std::string {
+            if (grade >= 90 && grade <= 100) {
+                return "A+";
+            }  ........
+
+
+• A list of the exceptions that you have reported and the cases where you terminated texecution normally.
+
+-terminations when it checks for number of arguments passed from command line
+-terminations if catch is triggered after trying to createList
+
+
+const T& operator[](size_t i) const {
+            if (i > max_size) {
+                throw "The index passed to the subscripting operator is out-of-bounds";
+            }
+            else {
+                return list[i];
+            }
+        }
+
+KVList(int n) {
+            if (n > 0) {}
+            else {
+                throw "The number of elements received in the constructor is not positive-valued";
+            }

@@ -1,0 +1,5 @@
+• The advantage that smart pointer syntax provides.
+Simple syntax and it deallocates memory for you so that you don't need to put a 'delete' line.
+
+• List the difference between raw and smart pointer syntax in your solution.
+T* vs. std::unique_ptr<T>& instead.
